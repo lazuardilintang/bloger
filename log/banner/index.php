@@ -300,7 +300,7 @@ if ($pangkat != "admin") {
                     if ($jumlah < 1) {
                         echo "<td colspan='6'>belum ada</td>";
                     }
-                    foreach ($dion as $cek):
+                   while ($cek = mysqli_fetch_assoc($dion)) {
                      ?> 
                         <tr>
                             <td><?php echo $no++ ?></td>
@@ -313,7 +313,7 @@ if ($pangkat != "admin") {
                                     <a href="<?php echo URL ?>baca.php?id=<?php echo $cek['id_artikel'] ?>">baca</a>
                             </td>
                         </tr>
-                         <?php endforeach; ?>
+                         <?php }; ?>
                     </tbody>
                 </table>
             </div>

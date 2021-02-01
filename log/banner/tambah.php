@@ -46,16 +46,16 @@ if ($_SESSION['status'] != 'login' ) {
             echo "
             <script>
                 alert('data berhasil ditambahkan!');
+                document.location.href = '". BASE_URL ."banner';
             </script>
              ";
-             header("location:".BASE_URL."banner");
         }else{
              echo "
                  <script>
                 alert('data gagal ditambahkan!');
+                document.location.href = '". BASE_URL ."banner';
                 </script>
              ";
-             header("location:".BASE_URL."banner");
         }
     }
 
@@ -305,7 +305,7 @@ if ($_SESSION['status'] != 'login' ) {
         <?php 
         $cek = mysqli_query($kon,"SELECT * from artikel where status='on' ");
         while ($ambil = mysqli_fetch_assoc($cek)) { ?>
-            <option value=<?php echo $ambil['judul'] ?>><?php echo $ambil['judul'] ?></option>
+            <option value=<?php echo $ambil['id'] ?>><?php echo $ambil['judul'] ?></option>
         <?php }?>
         </select>
         </div>
