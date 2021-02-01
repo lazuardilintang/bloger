@@ -1,6 +1,8 @@
 <?php 
 define('BASE_URL', 'http://localhost/blog/log/');
 define('URL', 'http://localhost/blog/');
+define('GAMBAR', 'http://localhost/blog/gambar/');
+
 
 
 $kon = mysqli_connect("localhost","root","","bloger");
@@ -35,12 +37,6 @@ function tambahkan($masukan)
 	$status = 'on';
 	$kategori = $masukan['kategori'];
 	$gambar = upload();
-	if( !$gambar ) {
-		echo "<script>
-				alert('masukan thumbnail!');
-		      </script>";
-		return false;
-	}
 	$query = "INSERT INTO artikel values ('','$judul','$isi','$penulis','$tanggal','$jam','$kategori','$status','$gambar')";
 	$aksi = mysqli_query($kon,$query);
 
@@ -50,8 +46,8 @@ function tambahkan($masukan)
 function upload() {
 
 	$nama = $_FILES['gambar']['name'];
-	$error = $_FILES['gambar']['size'];
 	$tmp = $_FILES['gambar']['tmp_name'];
+	$error = $_FILES['gambar']['error'];
 	$boleh = array('png','jpg','jpeg','gif');
 	$eks = pathinfo($nama,PATHINFO_EXTENSION);
 
@@ -113,7 +109,15 @@ function draft($masukan)
 	date_default_timezone_set('Asia/Jakarta');
 	$tanggal = date("Y-m-d");
 	$jam = date("h:i");
-	$query = "INSERT INTO draft values ('','$judul','$isi','$penulis','$tanggal','$jam','$gambar')";
+	$status = 'on';
+	$kategori = $masukan['kategori'];
+	$gambar = upload();
+	if ($_FILES['gambar']['error'] === 4) {
+		$gambar = $masukan['gambarlama'];
+	}else{
+		$gambar = upload();
+	}
+	$query = "INSERT INTO draft values ('','$judul','$isi','$penulis','$tanggal','$jam','$kategori','$status','$gambar')";
 	$aksi = mysqli_query($kon,$query);
 
 	return mysqli_affected_rows($kon);
@@ -302,6 +306,18 @@ function masukkat($kategori)
 
 	$nama = $_POST['kategori'];
 	$status = "on";
+
+	$cek = mysqli_query($kon,"SELECT *from kategori where nama = '$nama' ");
+	$hitung = mysqli_num_rows($cek);
+
+	if ($hitung > 0) {
+		echo " <script>
+                alert('data kategori sudah ada!');
+                document.location.href = '". BASE_URL ."artikel?halaman=artikel';
+                </script>
+            ";
+            return false;
+	}
 
 	mysqli_query($kon,"INSERT INTO kategori values ('','$nama','$status') ");
 

@@ -40,6 +40,22 @@ if ($_SESSION['status'] != 'login' ) {
         ";
     }
 
+    if (isset($_POST['tambah'])) {
+        if (masukkat($_POST)>0) {
+         echo " <script>
+                alert('data kategori sudah ditambahkan!');
+                document.location.href = '". BASE_URL ."artikel?halaman=artikel';
+                </script>
+            ";
+        }else{
+            echo " <script>
+                alert('data kategori gagal ditambahkan!');
+                document.location.href = '". BASE_URL ."artikel/kategori.php';
+                </script>
+            ";
+        }
+    }
+
 
 
      ?>
@@ -289,12 +305,14 @@ if ($_SESSION['status'] != 'login' ) {
         </div>
                 <button name="tambah" class="tambah">tambah kategori</button> 
     </form>
-    <a href="<?php echo BASE_URL."artikel/index.php?halaman=kategori" ?>">halaman kategori</a>
+    <?php if ($pangkat =='admin'): ?>
+    <a href="<?php echo BASE_URL."artikel/index.php?halaman=kategori" ?>">halaman kategori</a>        
+    <?php endif ?>
 </div>
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright &copy; Bloger 2020</span>
                     </div>
                 </div>
             </footer>

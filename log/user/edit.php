@@ -370,6 +370,27 @@ if (isset($_POST['edit'])) {
                 </div>    
             </div>
         </div>
+
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-lg-6">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Accordion -->
+                                <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse"
+                                    role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                                    <h6 class="m-0 font-weight-bold text-primary">Foto</h6>
+                                </a>
+                                <!-- Card Content - Collapse -->
+                                <div class="collapse show" id="collapseCardExample">
+                                    <div class="card-body">
+                                        <img width="100%" src="<?php echo URL ?>gambar/<?php echo $aksi['foto'] ?>" >
+                                    </div>
+                                </div>
+                            </div>           
+                        </div>
+            
+            </div>
+        </div>
 		</div>	
 		<button name="edit" class="tambah">edit</button>
 	</form>
@@ -407,23 +428,20 @@ if (isset($_POST['edit'])) {
     </div>
 <!-- akhir container artikel -->
 
-<script src="../../editor/ckeditor.js"></script>
-
-<!-- Bootstrap core JavaScript-->
-    <script src="../vendor/jquery/jquery.min.js"></script>
-    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<?php echo BASE_URL."alat/vendor/jquery/jquery.min.js" ?>"></script>
+    <script src="<?php echo BASE_URL."alat/vendor/bootstrap/js/bootstrap.bundle.min.js" ?>"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="<?php echo BASE_URL."alat/vendor/jquery-easing/jquery.easing.min.js"?>"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="../js/sb-admin-2.min.js"></script>
+    <script src="<?php echo BASE_URL."alat/js/sb-admin-2.min.js" ?>"></script>
 
     <!-- Page level plugins -->
-    <script src="../vendor/chart.js/Chart.min.js"></script>
+    <script src="<?php echo BASE_URL."alat/vendor/chart.js/Chart.min.js" ?>"></script>
 
     <!-- Page level custom scripts -->
-    <script src="../js/demo/chart-area-demo.js"></script>
-    <script src="../js/demo/chart-pie-demo.js"></script>
+    <script src="<?php echo BASE_URL."alat/js/demo/chart-area-demo.js" ?>"></script>
+    <script src="<?php echo BASE_URL."alat/js/demo/chart-pie-demo.js" ?>"></script>
 </body>
 </html>

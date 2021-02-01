@@ -9,8 +9,8 @@
 tinymce.init({
     selector: '#rich-editor',
     width:'100%',
-    height: 500,
-    plugins: 'image code media',
+    height: 1000,
+    plugins: 'image code media autolink table',
     browser_spellcheck : true,
     menu: {
         file: { 

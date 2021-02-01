@@ -268,9 +268,10 @@ if ($_SESSION['status'] != 'login' ) {
 <!-- container artikel  -->
 <div class="container-fluid">
     <?php 
-        $hitung = mysqli_query($kon,"SELECT status *from $halaman where penulis = $penulis");
-       if ($hitung == 'off') {
-          $hasil = mysqli_num_rows($hitung);
+        if ($halaman != 'kategori') {
+             $hitung = mysqli_query($kon,"SELECT *from $halaman where status = 'off' and penulis = '$penulis' ");
+        $hasil = mysqli_num_rows($hitung);
+       if ($hasil > 0) {  
           echo "
           <div class='alert alert-primary' role='alert'>
             $halaman ada yang kami nonaktifkan karena mengandung kata kata yang berbahaya !! segera perbaiki
@@ -281,6 +282,7 @@ if ($_SESSION['status'] != 'login' ) {
 
           ";
        }
+        }
         ?>
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800"><?php echo $halaman ?></h1>
@@ -288,13 +290,12 @@ if ($_SESSION['status'] != 'login' ) {
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
+
             <!-- tambah artikel -->
              <a href="<?php echo URL ?>tambah.php" class="x3 d-sm-inline-block btn btn-sm btn-primary shadow-sm">
                 <i class="fas fa-plus" aria-hidden="true"></i> Tambah Artikel</a>
-                <?php if ($pangkat == "admin"): ?>
                  <a href="kategori.php" class="x3 d-sm-inline-block btn btn-sm btn-primary shadow-sm">
                 <i class="fas fa-plus" aria-hidden="true"></i> Tambah kategori</a>   
-                <?php endif ?>
                 <!-- tambah kategori -->
                 
         </div>

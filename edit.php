@@ -32,8 +32,8 @@ if ($_SESSION['status'] != 'login' ) {
              ";
         }
     }elseif (isset($_POST['masukan_draft'])) {
+        mysqli_query($kon,"DELETE from artikel where id = $nomer ");
         if (draft($_POST)>0) {
-            mysqli_query($Kon,"DELETE from artikel where id = '$nomer' ");
              echo "
                  <script>
                 alert('data draft berhasil ditambahkan!');
@@ -65,8 +65,8 @@ if ($_SESSION['status'] != 'login' ) {
              ";
         }
     }elseif (isset($_POST['masukan_artikel'])) {
-        if (tambahkan($_POST)>0) {
-            mysqli_query($Kon,"DELETE from draft where id = '$nomer' ");
+         mysqli_query($kon,"DELETE from draft where id = $nomer ");
+        if (tambahkan($_POST)>0) { 
              echo "
                  <script>
                 alert('data berhasil ditambahkan di artikel!');
@@ -398,8 +398,41 @@ if ($_SESSION['status'] != 'login' ) {
                 </div>
             </div>
             </div>
-            <div class="preview" id="imagePreview"></div>
-
+            <div class="col-sm-12">
+            <div class="row">
+                <div class="col-lg-6">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Accordion -->
+                                <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse"
+                                    role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                                    <h6 class="m-0 font-weight-bold text-primary">thumbnail</h6>
+                                </a>
+                                <!-- Card Content - Collapse -->
+                                <div class="collapse show" id="collapseCardExample">
+                                    <div class="card-body">
+                                        <img width="100%" src="<?php echo URL ?>gambar/<?php echo $key['gambar'] ?>" >
+                                    </div>
+                                </div>
+                            </div>           
+                        </div>
+                    <div class="col-lg-6">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Accordion -->
+                                <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse"
+                                    role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                                    <h6 class="m-0 font-weight-bold text-primary">Thumbnail baru</h6>
+                                </a>
+                                <!-- Card Content - Collapse -->
+                                <div class="collapse show" id="collapseCardExample">
+                                    <div class="card-body">
+                                        <div class="preview" id="imagePreview"></div>
+                                    </div>
+                                </div>
+                            </div>           
+                        </div>
+            </div>
+        </div>
+            
         </div>
 
         <?php 
@@ -460,7 +493,7 @@ if ($_SESSION['status'] != 'login' ) {
         if (fileInput.files && fileInput.files[0]) {
             var reader = new FileReader();
             reader.onload = function(e) {
-                document.getElementById('imagePreview').innerHTML = '<img width="300px" src="'+e.target.result+'"/>';
+                document.getElementById('imagePreview').innerHTML = '<img width="100%" src="'+e.target.result+'"/>';
             };
             reader.readAsDataURL(fileInput.files[0]);
         }

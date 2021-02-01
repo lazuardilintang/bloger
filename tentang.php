@@ -3,13 +3,14 @@ require 'fungsi/fungsi.php';
 $penulis = $_GET['penulis'];
  ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="utf-8">
-    <!--  This file has been downloaded from bootdey.com    @bootdey on twitter -->
-    <!--  All snippets are MIT license http://bootdey.com/license -->
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="blog MAXIMUM">
+    <meta name="author" content="lintang">
+    <meta name="MAXIMUM" content="MAXIMUM">
     <title><?php echo $penulis ?></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="<?php echo URL ?>boot/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?php echo URL ?>boot/tentang.css">
     <link rel="stylesheet" type="text/css" href="<?php echo URL ?>boot/blog.css">
@@ -26,7 +27,7 @@ $penulis = $_GET['penulis'];
               <a class="text-muted" href="tentang.php?penulis=<?php echo $key['penulis'] ?>"><?php echo $key['penulis'] ?></a>
             </div>
             <div class="col-4 text-center">
-              <a class="blog-header-logo text-dark" href="<?php echo URL ?>">Large</a>
+              <a class="blog-header-logo text-dark" href="<?php echo URL ?>">MAX</a>
             </div>
               <?php 
 
@@ -43,22 +44,21 @@ $penulis = $_GET['penulis'];
                 }
 
                ?>
-            </div> 
-          </div>
+            </div>   
         </header>
       <?php endforeach ?>
-    <div class="main-body">
+    <div style="height: auto;" class="main-body">
         <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
               <div class="card">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
-                    <img src="<?php echo URL ?>/gambar/<?php echo $key['foto'] ?>" alt="Admin" class="profilfoto" width="100%">
+                    <img src="<?php echo URL ?>gambar/<?php echo $key['foto'] ?>" alt="Admin" class="profilfoto" width="100%">
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 mb-5">
               <div class="card mb-3">
                 <div class="card-body">
                   <div class="row">
@@ -103,40 +103,35 @@ $penulis = $_GET['penulis'];
         </div>
 
 
-
-
-
-<div class="row mb-2 mt-4">
+ <div class="row m-auto mt-50">
   <?php 
-  $asik = lihat("SELECT *from artikel where penulis = '$penulis' order by rand() limit 4");
+  $asik = lihat("SELECT *from artikel where penulis = '$penulis' order by rand() limit 2");
   foreach ($asik as $ambil) :
   ?>
     <div class="col-md-6">
       <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col p-4 d-flex flex-column position-static">
           <strong class="d-inline-block mb-2 text-primary">
-            <?php echo $ambil['kategori']; ?>
+           <a href="kategori.php?kategori=<?php echo $ambil['kategori'] ?>"><?php echo $ambil['kategori']; ?></a>
             </strong>
           <h3 class="mb-0"><?php echo $ambil['judul'] ?></h3>
           <div class="mb-1 text-muted"><?php echo $ambil['tanggal'] ?></div>
           <p class="card-text mb-auto"><?php echo substr($ambil['isi'], 0,100); ?></p>
-          <a href="baca.php?id=<?php echo $ambil['id'] ?>" class="stretched-link">Continue reading</a>
+          <a href="baca.php?id=<?php echo $ambil['id'] ?>" class="link">Continue reading</a>
         </div>
         <div class="col-auto d-none d-lg-block">
-          <img class="bd-placeholder-img" alt="" src="<?php echo URL ?>/gambar/<?php echo $ambil['gambar'] ?>" width="200" height="250" >
+          <img class="bd-placeholder-img" alt="" src="<?php echo URL ?>gambar/<?php echo $ambil['gambar'] ?>" width="200" height="250" >
         </div>
       </div>
     </div>
     <?php endforeach ?>
   </div>
 
+</div>
 
-   </div>
-
-
-<footer class="blog-footer">
-  <p>Copyright &copy; Bloger 2020</p>
-  <p></p>
+<footer class="container blog-footer">
+  <p>Copyright &copy; MAXIMUM 2020</p>
+  <p>v.20210102</p>
   <p>
     <a href="#">Back to top</a>
   </p>

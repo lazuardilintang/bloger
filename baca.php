@@ -7,12 +7,10 @@ $id = $_GET['id'];
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Jekyll v4.1.1">
-    <title>Blog Template · Bootstrap</title>
-
-
+    <meta name="description" content="blog MAXIMUM">
+    <meta name="author" content="lintang">
+    <meta name="MAXIMUM" content="MAXIMUM">
+    <title>MAXIMUM</title>
     <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="<?php echo URL ?>boot/css/bootstrap.min.css">
     <style>
@@ -101,7 +99,7 @@ $id = $_GET['id'];
 
 <div class="row mb-2 mt-4">
   <?php 
-  $asik = lihat("SELECT *from artikel order by rand() limit 2");
+  $asik = lihat("SELECT *from artikel order by rand() limit 4");
   foreach ($asik as $ambil) :
   ?>
     <div class="col-md-6">
@@ -125,8 +123,8 @@ $id = $_GET['id'];
 
 <!-- akhir pilihan -->
 <footer class="blog-footer">
-  <p>Copyright &copy; Bloger 2020</p>
-  <p></p>
+  <p>Copyright &copy; MAXIMUM 2020</p>
+  <p>v.20210102</p>
   <p>
     <a href="#">Back to top</a>
   </p>
